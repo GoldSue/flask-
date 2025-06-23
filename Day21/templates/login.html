@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>用户登录</h1>
+
+    <form method="post">
+      <select name="role">
+          <option value="1">客户</option>
+          <option value="2">管理员</option>
+      </select>
+      <input type="text" name="mobile" placeholder="请输入手机号" />
+      <input type="password" name="pwd" placeholder="请输入密码" />
+      <input type="submit" value="提交" />
+      <span class="error">{{ error }}</span>
+        <script src="/static/js/aa.js"></script>
+    </form>
+  </div>
+</body>
+</html>
