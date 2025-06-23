@@ -1,0 +1,222 @@
+/* 导航栏整体 */
+.navbar {
+    width: 100%;
+    background: linear-gradient(90deg, #3949ab, #5c6bc0);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 导航内容容器 */
+.nav-container {
+    max-width: 960px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* Logo */
+.nav-logo {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+}
+
+/* 菜单列表 */
+.nav-menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+/* 菜单项 */
+.nav-menu > li {
+    position: relative;
+}
+
+/* 菜单链接 */
+.nav-link {
+    color: #cfd8dc;
+    font-weight: 600;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block;
+}
+
+/* 激活菜单 */
+.nav-link.active,
+.nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+}
+
+/* 下拉菜单箭头 */
+.caret {
+    font-size: 12px;
+    margin-left: 6px;
+}
+
+/* 下拉菜单 */
+.nav-dropdown:hover > .dropdown-menu,
+.nav-dropdown:focus-within > .dropdown-menu {
+    display: block;
+}
+
+/* 隐藏下拉菜单 */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    min-width: 160px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    border-radius: 6px;
+    padding: 8px 0;
+    z-index: 2000;
+}
+
+/* 下拉菜单项 */
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #34495e;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f4ff;
+    color: #3949ab;
+}
+
+/* 分割线 */
+.divider {
+    height: 1px;
+    margin: 6px 0;
+    background-color: #e0e0e0;
+}
+
+/* 页面主体距离导航条留空，避免内容被遮挡 */
+body {
+    padding-top: 60px;
+    background: #f9fbff;
+}
+
+/* 订单列表容器样式 */
+.container {
+    max-width: 960px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 12px 30px rgba(0, 13, 255, 0.15);
+    color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: box-shadow 0.3s ease;
+}
+
+.container:hover {
+    box-shadow: 0 20px 40px rgba(0, 13, 255, 0.25);
+}
+
+/* 标题 */
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 35px;
+    color: #1a237e;
+    text-align: center;
+    letter-spacing: 1.2px;
+}
+
+/* 表格样式 */
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    font-size: 17px;
+    text-align: left;
+    color: #34495e;
+}
+
+/* 表头 */
+.data-table thead tr {
+    background: linear-gradient(90deg, #5c6bc0, #3949ab);
+    color: #ffffff;
+    font-weight: 700;
+    border-radius: 12px;
+}
+
+.data-table thead th {
+    padding: 16px 20px;
+    position: relative;
+}
+
+/* 表格行 */
+.data-table tbody tr {
+    background: #f9fbff;
+    box-shadow: 0 4px 8px rgba(57, 73, 171, 0.1);
+    border-radius: 12px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.data-table tbody tr:hover {
+    background-color: #e3e9ff;
+    box-shadow: 0 8px 20px rgba(57, 73, 171, 0.2);
+    cursor: pointer;
+}
+
+.data-table td {
+    padding: 16px 20px;
+    vertical-align: middle;
+}
+
+.data-table th, .data-table td {
+    border: none;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    .data-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* 状态颜色示例 */
+.status-pending {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.status-completed {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.status-canceled {
+    color: #e74c3c;
+    font-weight: 600;
+}
