@@ -73,3 +73,19 @@ input[type="submit"]:hover {
     font-size: 14px;
     min-height: 20px;
 }
+.status-label.primary {
+    color: #007bff; /* 蓝色 */
+}
+
+.status-label.warning {
+    color: #ffc107; /* 橙色 */
+}
+
+.status-label.success {
+    color: #28a745; /* 绿色 */
+}
+
+.status-label.danger {
+    color: #dc3545; /* 红色 */
+}
+

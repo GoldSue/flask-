@@ -1,35 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>数据列表</title>
-    <link rel="stylesheet" href="/static/css/order_style.css" />
-</head>
-<body>
-  <!-- 优化后的导航栏 -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="#" class="nav-logo">订单平台</a>
-      <ul class="nav-menu">
-        <li><a href="#" class="nav-link">用户管理</a></li>
-        <li><a href="#" class="nav-link active">订单管理</a></li>
-        <li class="nav-dropdown">
-          <a href="#" class="nav-link dropdown-toggle">{{ real_name }} <span class="caret">▼</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" class="dropdown-item">操作一</a></li>
-            <li><a href="#" class="dropdown-item">操作二</a></li>
-            <li><a href="#" class="dropdown-item">操作三</a></li>
-            <li class="divider"></li>
-            <li><a href="#" class="dropdown-item">分割项一</a></li>
-            <li class="divider"></li>
-            <li><a href="#" class="dropdown-item">分割项二</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </nav>
 
-  <div class="container">
+{% extends 'layout.html'%}
+
+
+{% block body%}
+
+
+      <div>
+
+      <a href="/order/create" class="btn-success">添加</a>
+  </div>
       <h1>数据列表</h1>
 
       <table class="data-table">
@@ -48,13 +27,12 @@
                   <td>{{ item.id }}</td>
                   <td>{{ item.url }}</td>
                   <td>{{ item.count }}</td>
-                  <td>{{ status_dict[item.status] }}</td>
+                  <!-- 这里修正了status_dict的访问方式 -->
+                  <td><span class="status-label {{ status_dict[item.status].color }}">{{ status_dict[item.status].text }}</span></td>
                   <td>{{ item.real_name }}</td>
               </tr>
               {% endfor %}
           </tbody>
       </table>
-    </div>
 
-</body>
-</html>
+{% endblock%}

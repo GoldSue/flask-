@@ -1,7 +1,13 @@
 from flask import Blueprint,session, render_template, request, redirect, url_for
+
+from Day21 import create_app
 from Day21.utils.db import fetch_all,fetch_one
 
 od = Blueprint('order', __name__)
+
+
+
+
 
 
 @od.route('/order/list')
@@ -16,11 +22,11 @@ def order_list():
     else:
         sql = "select * from orders LEFT JOIN userinfo on orders.user_id = userinfo.id where orders.user_id = %s"
         data_list = fetch_all(sql, (user_info["id"],))
-    status_dict = {
-        1: "待执行",
-        2: "正在执行",
-        3: "完成",
-        4: "失败",
+    status_dict = {1: {"text":"待执行", "color":"primary"},
+                   2: {"text":"正在执行", "color":"warning"},
+                   3: {"text":"完成", "color":"success"},
+                   4: {"text":"失败", "color":"danger"},
+
     }
     print("执行SQL:", sql)
     print("返回条数:", len(data_list))
@@ -30,10 +36,13 @@ def order_list():
 
 
 @od.route('/order/create')
-def create_list():
-    return "创建订单"
+def order_create():
+
+    return render_template("order_create.html")
 
 
 @od.route('/order/delete')
 def delete_list():
     return "删除订单"
+
+
