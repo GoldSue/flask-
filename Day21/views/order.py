@@ -1,7 +1,11 @@
 from flask import Blueprint,session, render_template, request, redirect, url_for
 
 from Day21 import create_app
+from Day21.utils import db
 from Day21.utils.db import fetch_all,fetch_one
+from Day21.utils import cache
+
+
 
 od = Blueprint('order', __name__)
 
@@ -35,10 +39,17 @@ def order_list():
     return render_template('order_list.html', data_list=data_list, status_dict=status_dict,real_name=real_name)
 
 
-@od.route('/order/create')
+@od.route('/order/create', methods=["GET", "POST"])
 def order_create():
-
-    return render_template("order_create.html")
+    if request.method == "GET":
+        return render_template("order_create.html")
+    url = request.form.get("url")
+    count = request.form.get("count")
+    params = [url, count, session.get("user_info").get("id")]
+    order_id = db.create("insert into orders(url,count,user_id,status)values (%s,%s,%s,1)",params)
+    print(order_id)
+    cache.push_queue(order_id)
+    return redirect('/order/list')
 
 
 @od.route('/order/delete')

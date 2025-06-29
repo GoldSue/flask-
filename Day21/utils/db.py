@@ -50,6 +50,20 @@ def get_current_db():
     print("当前数据库:", db_name)
     return db_name
 
+
+def create(sql, params):
+    with POOL.connection() as conn:
+        with conn.cursor() as cursor:
+            if params:
+                cursor.execute(sql, params)
+            else:
+                cursor.execute(sql)
+
+            conn.commit()
+            return cursor.lastrowid
+
+
+
 get_current_db()
 
 
